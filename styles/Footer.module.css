@@ -1,0 +1,24 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    height: 150px;
+    margin-top: 2em;
+    border-top: 3px solid #111;
+    color: #fff;
+    flex-direction: column;
+}
+
+.footer p {
+    margin-bottom: 1em;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.footer span {
+    font-weight: bold;
+    color: #ff1a1a
+}
