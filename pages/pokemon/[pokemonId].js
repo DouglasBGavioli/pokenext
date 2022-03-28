@@ -1,5 +1,8 @@
 import Image from "next/Image";
 import styles from "../../styles/Pokemon.module.css";
+
+import { useRouter } from "next/router";
+
 export const getStaticPaths = async () => {
     const maxPokemons = 251; // podemos mudar sempre que quiser o numero de poke
     const api = "https://pokeapi.co/api/v2/pokemon";
@@ -15,7 +18,7 @@ export const getStaticPaths = async () => {
     });
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 };
 
@@ -31,7 +34,12 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Pokemon({ pokemon }) {
-    console.log(pokemon);
+    const router = useRouter();
+
+    if (router.isFallback) {
+        return <div> Carregando....</div>;
+    }
+
     return (
         <div className={styles.pokemon_container}>
             <h1 className={styles.title}>{pokemon.name}</h1>
